@@ -1,9 +1,145 @@
+.c-message_attachment {
+  color: $base-font-color;
+
+  &__border {
+    background-color: $color-shade-light;
+  }
+
+  &__delete {
+    color: $base-link-color;
+
+    &:hover {
+      color: $base-link-color-active;
+    }
+  }
+
+  &__pretext {
+    color: $base-font-color;
+  }
+
+  &__part + .c-message_attachment__part::before {
+    color: $color-shade-light;
+  }
+
+  &__author
+  &__autor--distinct {
+    color: $base-link-color;
+  }
+
+  &__author_link + .c-message_attachment__author_link {
+    color: $base-link-color;
+  }
+
+  &__title_link span {
+    color: $base-font-color;
+  }
+
+  &__text_expander {
+    color: $base-link-color;
+  }
+
+  &__footer {
+    color: $base-link-color;
+  }
+
+  &__image,
+  &__thumb,
+  &__video_thumb {
+    box-shadow: 0 0 0 1px  rgba($color-shade-darkest, 0.1) inset;
+  }
+
+  &__video_html {
+    background-color: rgba($color-base, 0.4);
+  }
+
+  &__video_buttons {
+    background: rgba($color-shade-darkest, 0.4);
+  }
+
+  &__video_link:visited,
+  &__video_link:link {
+    color: $base-font-color;
+  }
+
+  &__video_play,
+  &__video_link {
+    color: $base-font-color;
+    text-shadow: 0 1px 1px  rgba($color-shade-darkest, 0.5);
+  }
+
+  &__video_play:hover,
+  &__video_link:hover {
+    color: $base-font-color;
+  }
+
+  &__media_trigger .c-expandable_trigger {
+    color: $base-link-color;
+  }
+
+  &__media_trigger--too_large {
+    color: $base-link-color;
+  }
+
+  &__select {
+    border-color: $color-shade-darkest;
+
+    &:hover,
+    &:active {
+      border-color: $color-shade-light;
+    }
+  }
+}
+
+.c-message {
+  &__reply_bar {
+    &:hover,
+    &--focus {
+      background-color: $color-base;
+      border-color: $color-shade-darkest;
+
+      .c-message__reply_bar_arrow {
+        color: $color-highlight;
+      }
+
+      .c-message__reply_bar_view_thread {
+        background-color: $color-shade-light;
+      }
+    }
+  }
+
+  &__reply_bar_description {
+    color: $color-highlight;
+  }
+
+  &__file_meta {
+    color: $color-highlight;
+  }
+
+  &__image_container {
+    background: rgba($color-shade-darkest, 0.1);
+  }
+
+  &__image_wrapper {
+    &:after {
+      border-color: transparent;
+    }
+  }
+}
+
 .attachment_group {
   &.has_container {
+    background: $color-base;
     border: 1px solid $color-shade-dark;
 
     .inline_attachment::after {
       background-color: $color-shade-dark;
+    }
+
+    &.has_link:hover {
+      border-bottom-color: $color-shade-dark;
+      border-left-color: $color-shade-dark;
+      border-right-color: $color-shade-dark;
+      box-shadow: 0 1px 1px $color-shadow-light;
     }
   }
 
@@ -18,6 +154,14 @@
 
     .attachment_source_name + .attachment_author_name::before {
       color: $color-highlight;
+    }
+  }
+
+  .inline_attachment.reply_broadcast + .attachment_rule {
+    color: $color-highlight;
+
+    &::after {
+      border-bottom: 1px solid $color-shade-dark;
     }
   }
 
@@ -51,16 +195,16 @@
   color: $color-highlight;
 }
 
+.msg_inline_attachment_column.column_border {
+  background-color: $color-shade-light;
+}
+
 .msg_inline_img_holder .msg_inline_img {
   box-shadow: inset 0 0 0 1px $color-shade-darkest;
 }
 
 .msg_inline_attachment_collapser,
 .msg_inline_attachment_expander,
-.msg_inline_email_collapser,
-.msg_inline_email_expander,
-.msg_inline_file_preview_collapser,
-.msg_inline_file_preview_expander,
 .msg_inline_img_collapser,
 .msg_inline_img_expander,
 .msg_inline_media_toggler,
@@ -83,10 +227,6 @@
   &:hover {
     color: $color-highlight;
   }
-}
-
-.msg_inline_file_preview_collapser.title_hidden {
-  color: $color-highlight;
 }
 
 .inline_attachment {
@@ -163,8 +303,8 @@
       }
     }
 
-    .ts_icon[class*=ts_icon_caret]:hover {
-      color: $base-link-color-active;
+    .ts_icon.msg_inline_media_toggler:hover {
+      color: $base-link-color-active !important;
     }
   }
 
@@ -191,10 +331,19 @@
   color: $base-link-color-active;
 }
 
-.file_container {
+.file_container,
+.c-file_container {
   background: $color-shade-darkest;
-  border: 1px solid $color-shade-darkest;
+  border: 1px solid $color-shade-dark;
   color: $base-font-color;
+
+  &:hover,
+  &:focus,
+  &.file_menu_open {
+    border-bottom-color: $color-shade-dark;
+    border-left-color: $color-shade-dark;
+    border-right-color: $color-shade-dark;
+  }
 
   &::after,
   &.post_container::after {
@@ -231,6 +380,7 @@
 
   .preview_actions .btn {
     background-color: $color-shade-dark;
+    color: $base-font-color !important;
 
     &::after {
       border-color: $color-shade-darkest;
@@ -278,9 +428,35 @@
   }
 
   .preview_show .preview_show_btn {
-    background: linear-gradient(rgba($color-shade-darkest, 0.8), rgba($color-shade-darkest, 0.8)), linear-gradient(rgba($color-shade-lightest, 0.3), rgba($color-shade-lightest, 0.3));
-    color: $base-link-color;
+    background: linear-gradient(rgba($color-shade-light, 0.8), rgba($color-shade-light, 0.8)), linear-gradient(rgba($color-shade-lightest, 0.3), rgba($color-shade-lightest, 0.3));
+    color: $base-font-color;
   }
+
+  &.file_menu_open,
+  &:focus,
+  &:hover {
+    .preview_show_less .preview_show_btn {
+      background: rgba($color-shade-light, 0.8);
+      color: $base-font-color;
+    }
+  }
+
+  .c-file__title {
+    color: $base-font-color;
+  }
+}
+
+.c-file_container--has_thumb {
+  .c-file {
+    &__actions::before {
+      background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0), $color-shade-darkest 20px);
+    }
+  }
+}
+
+.message--focus .file_container .preview_show.preview_show_less .preview_show_btn {
+  background: $color-shade-light;
+  color: $base-font-color;
 }
 
 .msg_inline_video_buttons_div {
@@ -293,17 +469,6 @@
     &:visited {
       color: $base-font-color;
       text-shadow: 0 1px 1px rgba($color-shade-darkest, 0.5);
-    }
-  }
-}
-
-body:not(.feature_new_message_markup) .meta {
-  &.msg_inline_file_preview_toggler,
-  &.msg_inline_img_toggler {
-    a,
-    .member,
-    .service_link {
-      color: $base-link-color !important;
     }
   }
 }
@@ -343,4 +508,21 @@ body:not(.feature_new_message_markup) .meta {
   pre {
     background: $color-shade-dark;
   }
+}
+
+ts-message .reply_bar {
+  .reply_bar_caret,
+  .view_conv_hover,
+  .last_reply_at {
+    color: $color-highlight;
+  }
+
+  &:hover {
+    background: $color-base;
+    border-color: $color-shade-darkest;
+  }
+}
+
+.inline_color_block {
+  border-color: $color-shade-light;
 }

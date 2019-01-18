@@ -1,126 +1,29 @@
 #autocomplete_menu {
   color: $base-font-color;
 
+  header {
+    background-color: $color-base;
+
+    .header_label {
+      color: $color-highlight;
+    }
+
+    hr {
+      border-bottom-color: transparent;
+      border-top-color: $color-shade-darkest;
+    }
+  }
+
   h2 {
     color: $base-font-color;
-  }
-
-  ol {
-    li {
-      &.selected {
-        background-color: $color-shade-lightest;
-        color: $base-font-color;
-
-        &:hover {
-          background-color: $color-shade-lightest;
-          color: $base-font-color;
-
-          .keyword_placeholder,
-          .username,
-          &.keyword_match .modifier {
-            color: $color-highlight;
-          }
-        }
-
-        .keyword_placeholder,
-        .username,
-        &.keyword_match .modifier {
-          color: $color-highlight;
-        }
-
-        .ts_icon,
-        &:hover .ts_icon {
-          color: $color-highlight !important;
-        }
-      }
-
-      &:hover {
-        background-color: transparent;
-      }
-
-      .ellipsis_icon,
-      .history_icon,
-      .modifier_icon {
-        color: $color-highlight;
-      }
-    }
-  }
-
-  footer,
-  header {
-    background-color: transparent;
-
-    .keyword::before,
-    .modifier::before {
-      background: $color-shade-lightest;
-      border: 1px solid $color-shade-light;
-      color: $base-font-color;
-    }
-
-    .selected {
-      .keyword::before,
-      .modifier::before {
-        background: rgba($color-shade-light, 0.25);
-        border: $color-shade-lightest;
-      }
-    }
-
-    .modifier.incomplete::before {
-      background: $color-shade-dark;
-      border: 1px solid $color-shade-darkest;
-    }
   }
 
   .no_results {
     color: $base-font-color;
   }
 
-  .keyword_match .modifier,
-  .username {
+  .keyword_match .modifier {
     color: $color-highlight;
-  }
-
-  .keyword_placeholder {
-    color: $color-highlight;
-  }
-
-  .history {
-    .keyword::before {
-      background: $color-shade-lightest;
-      border: 1px solid $color-shade-light;
-      color: $base-font-color;
-    }
-
-    .modifier {
-      &::before {
-        background: $color-shade-lightest;
-        border: 1px solid $color-shade-light;
-        color: $base-font-color;
-      }
-
-      &.incomplete::before {
-        background: $color-shade-dark;
-        border: 1px solid $color-shade-darkest;
-      }
-    }
-
-    .selected {
-      .keyword::before,
-      .modifier::before {
-        background: rgba($color-shade-light, 0.25);
-        border: $color-shade-lightest;
-      }
-    }
-  }
-
-  .delete_history_item_target_area {
-    .delete_icon {
-      color: $base-link-color;
-    }
-
-    &:hover .ts_icon.delete_icon {
-      color: $color-red !important;
-    }
   }
 
   .boxed {
@@ -129,18 +32,12 @@
     box-shadow: 0 1px 0 0 $color-shadow-light;
   }
 
-  .section_header {
-    .header_label {
-      background-color: $color-base;
-      color: $color-highlight;
-    }
-  }
-
   .pickmeup {
     border-bottom: 1px solid $color-shade-dark;
   }
 
-  &.search_menu {
+  &.search_menu,
+  &.search_menu.unified {
     .section_header::before {
       background-color: $color-shade-light;
     }
@@ -161,13 +58,41 @@
       }
     }
 
-    li.highlighted .muted_text {
-      color: $color-highlight;
+    li.highlighted {
+      .result_item_btn {
+        background: $color-shade-dark;
+        color: $base-font-color;
+        text-shadow: 0 1px 0 $color-shadow-light;
+      }
+
+      .modifier_icon {
+        color: $color-highlight;
+      }
+
+      .action_btn {
+        color: $base-font-color;
+      }
+
+      .delete_btn {
+        color: $base-link-color;
+
+        &:focus,
+        &:hover {
+          color: $color-red;
+        }
+      }
+
+      .muted_text {
+        color: $color-highlight;
+      }
     }
 
-    &:not(.keyboard_active) li {
+    &:not(.keyboard_active) li,
+    .results.unified:not(.keyboard_active) li {
       &:focus,
       &:hover {
+        background: transparent;
+
         .muted_text {
           color: $color-highlight;
         }
@@ -197,29 +122,6 @@
       }
     }
 
-    li.highlighted .result_item_btn {
-      background: $color-shade-dark;
-      color: $base-font-color;
-      text-shadow: 0 1px 0 $color-shadow-light;
-    }
-
-    li.highlighted .modifier_icon {
-      color: $color-highlight;
-    }
-
-    li.highlighted .action_btn {
-      color: $base-font-color;
-    }
-
-    li.highlighted .delete_btn {
-      color: $base-link-color;
-
-      &:focus,
-      &:hover {
-        color: $color-red;
-      }
-    }
-
     .muted_text {
       color: $color-highlight;
     }
@@ -232,12 +134,26 @@
       color: $base-font-color;
     }
 
+    .results.unified {
+      .unified_autocomplete_item {
+        .text {
+          color: $base-font-color;
+        }
+
+        .token {
+          background-color: $color-shade-mid;
+          color: $base-font-color;
+        }
+      }
+    }
+
     .action_btn,
     .modifier_icon {
       color: $color-highlight;
     }
 
-    footer {
+    footer,
+    footer.unified {
       .keyword::before,
       .modifier::before {
         background: $color-shade-lightest;
@@ -258,75 +174,6 @@
         border: 1px solid $color-shade-darkest;
       }
     }
-  }
-}
-
-#autocomplete_menu:not(.search_menu) {
-  footer,
-  header {
-    background-color: transparent;
-
-    .keyword::before,
-    .modifier::before {
-      background: $color-shade-lightest;
-      border: 1px solid $color-shade-light;
-      color: $base-font-color;
-    }
-
-    .selected {
-      .keyword::before,
-      .modifier::before {
-        background: rgba($color-shade-light, 0.25);
-        border: $color-shade-lightest;
-      }
-    }
-
-    .modifier.incomplete::before {
-      background: $color-shade-dark;
-      border: 1px solid $color-shade-darkest;
-    }
-  }
-
-  ol {
-    li {
-      &.selected {
-        background-color: $color-shade-lightest;
-        color: $base-font-color;
-
-        &:hover {
-          background-color: $color-shade-lightest;
-          color: $base-font-color;
-        }
-
-        .username,
-        &:hover .username,
-        &.keyword_match .modifier,
-        &:hover.keyword_match .modifier,
-        .keyword_placeholder,
-        &:hover .keyword_placeholder {
-          color: $color-highlight;
-        }
-
-        .ts_icon,
-        &:hover .ts_icon {
-          color: $color-highlight !important;
-        }
-      }
-
-      &:hover {
-        background-color: transparent;
-      }
-
-      .ellipsis_icon,
-      .history_icon,
-      .modifier_icon {
-        color: $color-highlight;
-      }
-    }
-  }
-
-  .keyword_placeholder {
-    color: $color-highlight;
   }
 }
 

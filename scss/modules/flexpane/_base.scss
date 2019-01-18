@@ -5,12 +5,9 @@
 #flex_contents {
   background: $color-base;
 
-  .monkey_scroll_hider {
-    background: $color-base;
-  }
-
   .heading {
-    background: $color-base;
+    background: darken($color-base, 5%);
+    border-bottom-color: $color-shade-dark;
     color: $base-link-color;
 
     a {
@@ -44,7 +41,11 @@
     }
   }
 
-  .subheading {
+  .heading_text {
+    color: $base-link-color;
+  }
+
+  .subheading:not(.empty) {
     background: $color-base;
     border-top: 1px solid $color-shade-darkest;
     color: $color-highlight;
@@ -64,6 +65,7 @@
 
   .flexpane_tab_bar {
     li {
+      .tab,
       a {
         color: $base-link-color;
       }
@@ -71,7 +73,8 @@
       &:hover {
         border-bottom: 4px solid $color-shade-dark;
 
-        a {
+        a,
+        .tab {
           color: $base-link-color;
         }
       }
@@ -79,7 +82,8 @@
       &.active {
         border-bottom: 4px solid $color-shade-dark;
 
-        a {
+        a,
+        .tab {
           color: $base-link-color;
         }
       }
@@ -96,6 +100,19 @@
   }
 }
 
+.close_flexpane {
+  color: $color-highlight;
+
+  &:focus,
+  &:hover {
+    color: $base-font-color;
+  }
+}
+
+#client-ui.flex_pane_showing #col_flex {
+  border-left-color: $color-shade-dark;
+}
+
 .toolbar_container {
   background: $color-base;
   border-bottom: 1px solid $color-shade-darkest;
@@ -104,4 +121,20 @@
 
 .msg_right_link {
   color: $base-link-color;
+}
+
+.message_location_label {
+  color: $color-highlight;
+}
+
+.p-flexpane {
+  &_header {
+    background: $color-shade-dark;
+    border-color: $color-shade-light;
+    color: $base-font-color;
+  }
+}
+
+#client_body:not(.onboarding):not(.feature_global_nav_layout):before {
+  background: $color-shade-dark;
 }

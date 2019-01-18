@@ -1,27 +1,99 @@
-#col_channels_collapse_view {
-  background: $color-shade-dark;
+.client_channels_list_container {
+  background-color: $color-shade-dark;
+  border-right-color: $color-base;
 }
 
 #col_channels {
-  background: $color-shade-dark;
+  color: $base-font-color;
+}
+
+.p-channel_sidebar {
+  background-color: $color-shade-dark;
   color: $base-font-color;
 
-  ul li {
-    &.channel.active a.channel_name,
-    &.group.active a.group_name,
-    &.member.active a.im_name {
-      background: $color-shade-light;
-      color: rgba($base-font-color, 0.9) !important;
+  &__channel,
+  &__link {
+    &,
+    &:link,
+    &:visited,
+    &:hover {
+      color: rgba($base-font-color, 0.8) !important;
+    }
+
+    &--selected,
+    &--selected:link,
+    &--selected:visited,
+    &--selected:hover {
+      color: $base-font-color;
+    }
+
+    &:hover {
+      background: $color-base !important;
     }
   }
 
-  &.channels_list_holder ul li {
-    &.channel.active .unread_highlight,
-    &.group.active .unread_highlight,
-    &.member.active .unread_highlight {
-      background: $color-base;
-      color: $base-font-color !important;
+  &__header {
+    color: $base-font-color !important;
+  }
+
+  &__channel--im.p-channel_sidebar__channel--selected .c-presence,
+  &__channel--im-slackbot.p-channel_sidebar__channel--selected::before {
+    color: $base-font-color;
+  }
+
+  &__channel--im .c-presence--away {
+    color: $color-highlight;
+  }
+
+  &__channel--selected,
+  &__link--selected {
+    background: $color-shade-light !important;
+
+    &:hover {
+      background: $color-shade-light !important;
     }
+  }
+
+  &__channel--selected {
+    &::before,
+    &:hover::before,
+    &::after,
+    &:hover::after {
+      color: $base-font-color;
+    }
+  }
+
+  &__link--selected {
+    &::before,
+    &::after {
+      color: $base-font-color;
+    }
+  }
+
+  &__badge,
+  &__banner--mentions {
+    background: $color-red;
+  }
+
+  .c-custom_scrollbar__thumb_vertical,
+  .c-scrollbar__bar {
+    background: $color-shade-light;
+  }
+
+  &__channel--unread:not(.p-channel_sidebar__channel--muted):not(.p-channel_sidebar__channel--selected) .p-channel_sidebar__name,
+  &__link--unread .p-channel_sidebar__name,
+  &__link--invites:not(.p-channel_sidebar__link--dim) .p-channel_sidebar__name,
+  &__section_heading_label--clickable:hover,
+  &__quickswitcher:hover {
+    color: lighten($base-font-color, 6%) !important;
+  }
+
+  &__close_container:hover {
+    background: $color-shade-darkest;
+  }
+
+  &__jumper {
+    background: transparent !important; // !important in order to overcome specificity score that matches base style
   }
 }
 
@@ -41,7 +113,12 @@
     li {
       text-shadow: 0 1px 1px $color-shadow-light;
 
-      a {
+      .channel_name,
+      .group_name,
+      .im_name,
+      .mpim_name,
+      > a {
+        background: $color-shade-dark;
         color: rgba($base-font-color, 0.8) !important;
 
         &:hover {
@@ -51,33 +128,12 @@
         }
       }
 
-      &.channel.active a.channel_name .prefix {
-        color: $color-highlight;
-      }
-
-      &.group {
-        &.active a.group_name .prefix {
-          color: $color-highlight;
+      .primary_action {
+        &.im_name:hover .im_name_background,
+        &.feature_user_custom_status:hover .im_name_background,
+        &:not(.feature_user_custom_status):hover {
+          background: $color-base;
         }
-
-        .group_close {
-          color: $base-link-color;
-        }
-      }
-
-      &.member:hover {
-        background: $color-base;
-      }
-
-      &.member .im_close,
-      &.mpim .mpim_close {
-        color: $color-highlight !important;
-      }
-
-      &.group.active .group_close,
-      &.member.active .im_close,
-      &.mpim.active .mpim_close {
-        color: $base-link-color !important;
       }
 
       &.mention a {
@@ -85,7 +141,7 @@
       }
 
       &.unread {
-        &:not(.muted_channel) a {
+        &:not(.muted_channel) .primary_action {
           color: lighten($base-font-color, 6%) !important;
         }
 
@@ -97,9 +153,10 @@
     }
   }
 
-  .unread_just {
-    background: $color-base;
-    color: $base-font-color;
+  .group_close,
+  .im_close,
+  .mpim_close {
+    color: $base-link-color !important;
   }
 
   .unread_highlights {
@@ -107,119 +164,10 @@
     color: $base-font-color;
     text-shadow: 0 1px 0 $color-shadow-light;
   }
-}
 
-.channels_list_new_btn {
-  color: $base-link-color;
-}
-
-.list_more {
-  border-bottom: 1px dotted $base-link-color;
-  color: $base-link-color !important;
-
-  &:hover {
-    border-bottom: 1px solid $base-link-color-active;
-    color: $base-link-color-active !important;
-  }
-}
-
-#channels_scroller.show_which_channel_is_active ul li.active a {
-  &.channel_name,
-  &.group_name,
-  &.im_name,
-  &.mpim_name {
+  .unread_msgs {
     background: $color-base;
     color: $base-font-color;
-  }
-
-  &.channel_name,
-  &.group_name {
-    .prefix {
-      color: $color-highlight;
-    }
-  }
-
-  .unread_highlights {
-    background: $color-red;
-    color: $base-font-color;
-  }
-}
-
-#channel_scroll_down,
-#channel_scroll_up {
-  background: $color-shade-darkest;
-  color: $base-font-color;
-  text-shadow: 0 1px 1px $color-shadow-light;
-}
-
-#channel_scroll_down {
-  &:hover {
-    color: $base-font-color;
-  }
-
-  &.unseen_have_mentions {
-    background: $color-red;
-  }
-}
-
-#channel_scroll_up {
-  &.unseen_have_mentions {
-    background: $color-red;
-  }
-}
-
-#channel_scroll_up:hover {
-  color: $base-font-color;
-}
-
-#list_controls {
-  border-bottom: 1px solid $color-shade-dark;
-  color: $color-highlight;
-}
-
-#list_search {
-  border: 1px solid $color-shade-dark;
-}
-
-#list_search_container {
-  .icon_search {
-    color: $color-highlight;
-  }
-
-  .icon_close {
-    color: $color-highlight;
-  }
-}
-
-#list_browser {
-  p.highlighted {
-    background: $color-base;
-  }
-
-  &:not(.keyboard_active) p:hover {
-    background: $color-base;
-  }
-
-  .item_creator {
-    color: $color-highlight;
-  }
-
-  .item_count {
-    color: $base-font-color;
-  }
-
-  .item_purpose {
-    color: $base-font-color;
-  }
-}
-
-#list_browser_dialog {
-  .modal-footer a {
-    color: $base-link-color;
-
-    &:hover {
-      color: $base-link-color-active;
-    }
   }
 }
 
@@ -253,17 +201,43 @@
     #quick_switcher_label {
       color: $base-link-color;
     }
-
-    #quick_switcher_shortcut {
-      color: $base-link-color;
-    }
   }
-}
-
-#quick_switcher_shortcut {
-  color: $color-highlight;
 }
 
 #quick_switcher_label {
   color: $color-highlight;
+}
+
+.p-channel_insights {
+  &__channel {
+    .channel_link {
+      color: $base-link-color;
+    }
+  }
+
+  &__date_heading {
+    &::before {
+      background-color: $color-shade-dark;
+    }
+
+    span {
+      background-color: $color-base;
+      color: $color-highlight;
+    }
+  }
+
+  &__message--truncate {
+    &::before {
+      background: linear-gradient(180deg,transparent,$color-shade-dark 90%);
+    }
+  }
+
+  &__message {
+    ts-message {
+      &.standalone:not(.for_mention_display):not(.for_search_display):not(.for_top_results_search_display):not(.for_star_display) {
+        background-color: $color-base;
+        border-color: $color-shade-dark;
+      }
+    }
+  }
 }

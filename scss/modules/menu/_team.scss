@@ -11,10 +11,6 @@
     i {
       color: $base-font-color;
     }
-
-    #current_user_name {
-      color: $base-font-color;
-    }
   }
 
   i {
@@ -33,40 +29,40 @@
   }
 }
 
-#team_header_user_name {
+#team_menu_user {
   color: $color-highlight;
 }
 
-#menu.team_menu {
-  box-shadow: 0 3px 8px $color-shadow-medium;
-
-  ul li.highlighted,
-  &:not(.keyboard_active) ul li:hover {
-    > a {
-      background: $color-shade-light;
-      color: $base-link-color-active;
-    }
-  }
-
-  ul li > a {
-    color: $base-link-color;
-  }
-}
-
-#im-list li.member.active .presence,
-#starred-list li.member.active .presence {
-  color: $base-font-color;
-
-  &.away {
-    color: $color-highlight;
-    text-shadow: 1px 1px $color-shadow-light;
-  }
+#team_menu_user_name,
+#team_menu_user_details {
+  color: $base-font-color !important;
+  opacity: 0.75;
 }
 
 .slack_menu_section::before {
-  border-top: 1px solid $color-shade-light;
+  border-top-color: $color-base;
 }
 
 .slack_menu_header_secondary {
+  color: $color-highlight;
+}
+
+.slack_menu_download {
+  background-color: $color-shade-dark;
+
+  ts-icon {
+    color: $color-highlight;
+  }
+}
+
+#menu_items_scroller::-webkit-scrollbar-track {
+  background: $color-base !important;
+}
+
+#limit_meter:hover #limit_meter_message_body {
+  color: $base-font-color;
+}
+
+#limit_meter_message_body {
   color: $color-highlight;
 }

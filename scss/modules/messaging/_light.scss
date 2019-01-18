@@ -1,3 +1,15 @@
+.c-message--light {
+  @if global-variable-exists(base-font-family) {
+    font-family: $base-font-family;
+  }
+
+  .c-message {
+    &__sender .c-message__sender_link {
+      color: $base-font-color;
+    }
+  }
+}
+
 .light_theme {
   ts-message {
     color: $base-font-color;
@@ -6,16 +18,9 @@
       font-family: $base-font-family;
     }
 
-    &.unprocessed {
-      color: rgba($base-font-color, 0.75);
-    }
-
-    .msg_right_link {
-      color: $base-link-color;
-    }
-
     .message_content {
-      .message_sender {
+      .message_sender,
+      .meta .message_sender:hover {
         color: $base-font-color !important;
       }
     }
@@ -23,49 +28,5 @@
     .comment::before {
       color: $color-highlight;
     }
-
-    &.archived .message_content,
-    &.bot_change .message_content,
-    &.joined .message_content,
-    &.left .message_content,
-    &.purpose .message_content,
-    &.rename .message_content,
-    &.sh_created .message_content .sh_auto_msg_text,
-    &.sh_shared .message_content .sh_auto_msg_text,
-    &.topic .message_content,
-    &.unarchived .message_content {
-      color: $color-highlight;
-    }
-
-    .meta {
-      color: $color-highlight;
-    }
-
-    .file_service_icon {
-      color: $color-highlight;
-    }
-  }
-
-  #message_editing_info {
-    color: $color-highlight;
-  }
-
-  #message_edit_form {
-    textarea {
-      color: $base-font-color;
-    }
-
-    p,
-    span {
-      color: $color-highlight;
-    }
-  }
-
-  .msg_inline_video_holder {
-    border: 1px solid $color-shade-dark;
-  }
-
-  .pinned_item_message_header {
-    color: $color-highlight;
   }
 }

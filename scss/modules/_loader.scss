@@ -4,10 +4,6 @@
   }
 }
 
-#self_help_link_div {
-  right: 110px !important;
-}
-
 #loading_welcome {
   background-image: none;
 }
@@ -22,24 +18,15 @@
   }
 }
 
-#col_channels_bg {
-  background: $color-base;
-}
-
 #loading_team_menu_bg,
 #loading_user_menu_bg {
   background: $color-base;
   border: none;
 }
 
-#loading_message_spinner {
-  background-image: none;
-  width: auto;
-
-  &::after {
-    color: $color-highlight;
-    content: "Loading...";
-  }
+.infinite_spinner_bg,
+.infinite_spinner_blue {
+  stroke: $base-font-color;
 }
 
 body.loading {
@@ -50,4 +37,9 @@ body.loading {
   #col_channels {
     background-color: $color-shade-dark;
   }
+}
+
+.p-degraded_list__loading {
+  background-color: $color-base;
+  color: $base-font-color;
 }

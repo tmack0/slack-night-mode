@@ -30,7 +30,8 @@
     }
   }
 
-  .file_size {
+  .file_size,
+  .muted_tooltip_info {
     color: $color-highlight;
   }
 
@@ -92,20 +93,13 @@
   }
 }
 
-.mini_file_profile {
-  .meta_data {
-    color: $color-highlight;
-  }
+#file_comment_textarea.texty_comment_input {
+  background: $color-base;
+  border-color: $color-shade-dark;
+  color: $base-font-color;
 
-  .author .member {
-    color: $color-highlight !important;
-  }
-
-  .title {
-    color: $base-font-color;
-  }
-
-  .bullet {
-    color: $color-highlight;
+  &.focus,
+  &:hover {
+    border-color: $color-shade-dark;
   }
 }

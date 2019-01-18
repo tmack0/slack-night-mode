@@ -1,75 +1,88 @@
-$filter-selects: (
-  filter_select: "fsl",
-  lazy_filter_select: "lfs"
-);
+.lazy_filter_select {
+  &.disabled {
+    background: $color-shade-dark;
 
-@each $filter, $abbr in $filter-selects {
-  .#{$filter}.default_style {
-    &.disabled {
-      background: $color-shade-dark;
+    input.lfs_input {
+      background: $color-shade-lightest;
+    }
+  }
 
-      input.#{$abbr}_input {
-        background: $color-shade-lightest;
-      }
+  .lfs_input_container {
+    background-color: $color-shade-light;
+    border-color: $color-shade-darkest;
+
+    &.active,
+    &:hover {
+      border-color: $color-shade-dark;
     }
 
-    .#{$abbr}_input_container {
-      border: 1px solid $color-shade-darkest;
-
-      &.active,
-      &:hover {
-        border-color: $color-shade-dark;
-      }
-
-      &.active {
-        box-shadow: 0 0 7px rgba($color-base, 0.15);
-      }
+    &.active {
+      box-shadow: 0 0 7px rgba($color-base, 0.15);
     }
+  }
 
-    .#{$abbr}_list_container {
-      background: $color-base;
-      border: 1px solid $color-shade-darkest;
-      box-shadow: 0 0 3px $color-shadow-dark;
-    }
+  .lfs_list_container {
+    background: $color-base;
+    border-color: $color-shade-darkest;
+    box-shadow: 0 0 3px $color-shadow-dark;
+  }
 
-    .#{$abbr}_list .#{$abbr}_item {
-      &.selected {
-        color: $base-font-color;
-      }
-
-      &.disabled {
-        color: $base-font-color;
-      }
-
-      &.active {
-        background-color: $color-shade-darkest;
-        border-color: $color-shade-dark;
-        color: $base-font-color;
-      }
-    }
-
-    .#{$abbr}_token {
-      background: $color-base;
-      border: 1px solid $color-shade-darkest;
+  .lfs_list .lfs_item {
+    &.selected {
       color: $base-font-color;
 
-      &::after {
-        color: $base-font-color;
+      .c-member__current-status .prevent_copy_paste,
+      .c-member__current-status--small::before,
+      .c-member__display-name,
+      .c-member__name,
+      .c-member__secondary-name {
+        color: $base-font-color !important;
       }
     }
 
-    &.single .#{$abbr}_input_container {
-      &.active::after,
-      &:hover::after {
-        color: $base-font-color;
-      }
+    &.disabled {
+      color: $color-highlight;
+    }
+
+    &.active {
+      background-color: $color-shade-darkest;
+      border-color: $color-shade-dark;
+      color: $base-font-color;
+    }
+  }
+
+  .lfs_token {
+    background: $color-base;
+    border: 1px solid $color-shade-darkest;
+    color: $base-font-color;
+
+    &::after {
+      color: $base-font-color;
+    }
+  }
+
+  &.single .lfs_input_container {
+    &.active::after,
+    &:hover::after {
+      color: $base-font-color;
     }
   }
 }
 
-.filter_select.default_style {
-  .fsl_paginate .fsl_paginate_back,
-  .fsl_paginate_forward {
-    color: $base-font-color;
+#select_share_channels .lazy_filter_select {
+  .lfs_value .lfs_item.selected {
+    color: $base-font-color !important;
+
+    .ts_icon:not(.presence_icon) {
+      color: $color-highlight !important;
+    }
+  }
+
+  .lfs_item {
+    color: $color-highlight !important;
+
+    .ts_icon:not(.presence_icon) {
+      color: $color-highlight !important;
+    }
   }
 }

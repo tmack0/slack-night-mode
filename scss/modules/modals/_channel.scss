@@ -44,9 +44,66 @@
 }
 
 #channel_invite_modal {
-  #channel_invite_container:not(.keyboard_active).not_scrolling .channel_invite_row:hover,
-  .channel_invite_row.highlighted {
+  #channel_invite_container:not(.keyboard_active).not_scrolling .channel_invite_row:not(.disabled):hover,
+  .channel_invite_row.highlighted:not(.disabled) {
     background: $color-base;
     border-color: $color-shade-dark;
   }
+}
+
+#channel_prefs_dialog {
+  color: $base-font-color;
+}
+
+#at_channel_warning_dialog {
+  background-color: $color-base;
+
+  &.fullsize {
+    background-color: $color-base;
+
+    .modal-body {
+      background-color: $color-base;
+    }
+  }
+}
+
+.channel_prefs_modal_header {
+  color: $base-font-color;
+}
+
+.channel_prefs_body {
+  &__section_header_title {
+    color: $base-font-color;
+  }
+
+  &__section_header_icon::before {
+    color: $base-font-color;
+  }
+
+  &__mute_help_text {
+    color: $color-highlight;
+  }
+}
+
+.channel_prefs_notifications_table {
+  border-bottom-color: $color-shade-dark;
+  color: $base-font-color;
+
+  &__large_cell,
+  &__small_cell,
+  &__row_title {
+    border-bottom-color: $color-shade-light !important;
+  }
+}
+
+.channel_prefs__muting_checkbox_label {
+  color: $base-font-color;
+
+  &:not(.subtle_silver) {
+    color: $base-font-color !important;
+  }
+}
+
+.notification_prefs_icon::before {
+  color: $base-font-color;
 }

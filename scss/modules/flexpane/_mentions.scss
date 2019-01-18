@@ -1,11 +1,7 @@
-#mentions_options {
+#flex_contents .subheading:not(.empty)#mentions_options {
   background-color: $color-base;
-  border-top: 1px solid $color-shade-darkest;
+  border-bottom-color: $color-shade-dark;
   color: $base-font-color;
-}
-
-#member_mentions_more_btn {
-  background-color: $color-shade-lightest !important;
 }
 
 .mention_day_container_div .day_divider {
@@ -14,5 +10,28 @@
   &::before {
     background: none;
     border-color: $color-shade-dark;
+  }
+}
+
+#member_mentions h3 a {
+  color: $base-link-color;
+}
+
+a.internal_member_link {
+  background: $color-shade-dark;
+  color: $base-font-color;
+}
+
+a.c-member_slug,
+.c-member_slug--link,
+.c-mrkdwn__subteam--link {
+  background: $color-shade-dark;
+  border: 1px solid $color-shade-light;
+  color: $base-font-color;
+
+  &.active,
+  &:hover {
+    background: $color-shade-mid;
+    color: $base-font-color;
   }
 }

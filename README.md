@@ -1,11 +1,21 @@
 # Slack Night Mode
-A Stylish style for easy Slack theming. [CC0](http://creativecommons.org/publicdomain/zero/1.0/).
+A user style for easy Slack theming. [CC0](http://creativecommons.org/publicdomain/zero/1.0/).
+
+[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
 ## Usage
 
-This theme requires that you use the Stylish extension for your browser (available for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/stylish/), [Chrome](https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe), and [Safari](http://sobolev.us/stylish/)).
+### Browser
 
-Unfortunately, if you're using the desktop version of Slack, you will not be able to use this theme (as explained on [my blog post](http://blog.lacour.me/making-slack-night-mode#toc_1)).
+This theme requires that you use [a user styles extension](https://github.com/openstyles/stylus/wiki/Stylish-Alternatives) for your browser, such as Stylus (available for [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne), and [Opera](https://addons.opera.com/en/extensions/details/stylus/)).
+
+### Desktop App
+
+No official support. Workarounds exist.
+
+**🛑 READ FIRST:** Most workarounds will request the compiled CSS file from this repository. You are strongly discouraged from using a remote CSS file. It's recommended that you create your own copy. An XSS attack could put your Slack client at risk.
+
+[![Chat on Gitter](https://badges.gitter.im/laCour/slack-night-mode.png)](https://gitter.im/slack-night-mode/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link) ([previous discussion](https://github.com/laCour/slack-night-mode/issues/73#issuecomment-242707078))
 
 ## Themes
 
@@ -25,9 +35,11 @@ This is based on Slack's aubergine/maroon style. It's the original theme.
 
 ### Variants
 
-#### Midnight Blue ([source](scss/themes/_midnight-blue.scss) - [build](css/variants/midnight-blue.css))
-
-#### Tomorrow Dark (base16) ([repository](https://github.com/danarnold/slack-night-mode))
+* **Arc ([source](scss/themes/_arc-dark.scss) - [build](css/variants/arc-dark.css))** _by [@Lemmmy](https://github.com/Lemmmy)_
+* **Midnight Blue ([source](scss/themes/_midnight-blue.scss) - [build](css/variants/midnight-blue.css))** _by [@matt-h](https://github.com/matt-h)_
+* **Tomorrow Dark (base16) ([repository](https://github.com/danarnold/slack-night-mode))** _by [@danarnold](https://github.com/danarnold)_
+* **Solarized Dark ([source](scss/themes/_solarized-dark.scss) - [build](css/variants/solarized-dark.css))** _by [@glostis](https://github.com/glostis)_
+* **Solarized Light ([source](scss/themes/_solarized-light.scss) - [build](css/variants/solarized-light.css))** _by [@glostis](https://github.com/glostis)_
 
 ### Extensions
 
