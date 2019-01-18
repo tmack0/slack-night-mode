@@ -17,6 +17,8 @@ No official support. Workarounds exist.
 
 [![Chat on Gitter](https://badges.gitter.im/laCour/slack-night-mode.png)](https://gitter.im/slack-night-mode/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link) ([previous discussion](https://github.com/laCour/slack-night-mode/issues/73#issuecomment-242707078))
 
+SEE slacknight.sh in root dir to do this. Download the .css into ~/slacknight/slacknight.css first, then run the shell or append the heredoc block to interop.js
+
 ## Themes
 
 ### Supported
